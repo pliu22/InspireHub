@@ -1,10 +1,21 @@
+const path = require('path');
+
 module.exports = {
-  packagerConfig: {},
+  packagerConfig: {
+    appVersion: "1.0",
+    name: 'InspireHub',
+    icon: './public/logo'
+  },
   rebuildConfig: {},
   makers: [
     {
       name: '@electron-forge/maker-squirrel',
-      config: {},
+      config: {
+         // An URL to an ICO file to use as the application icon (displayed in Control Panel > Programs and Features).
+         iconUrl: path.join(__dirname, 'public/logo.ico'),
+         // The ICO file to use as the icon for the generated Setup.exe
+         setupIcon: path.join(__dirname, 'public/logo.ico'),
+      },
     },
     {
       name: '@electron-forge/maker-zip',

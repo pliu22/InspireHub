@@ -1,3 +1,10 @@
+/*
+ * @Date: 2023-05-17 23:28:02
+ * @LastEditors: aei(imaei@foxmail.com)
+ * @LastEditTime: 2023-05-18 13:22:27
+ * @FilePath: \InspireHub\src\main.js
+ * @description: 
+ */
 const { app, BrowserWindow } = require('electron');
 const path = require('path');
 
@@ -14,7 +21,13 @@ const createWindow = () => {
     webPreferences: {
       preload: path.join(__dirname, 'preload.js'),
     },
+    icon: path.join(__dirname, 'logo.png')
   });
+  console.log(__dirname)
+  // macOS
+  if (process.platform === 'darwin') {
+    app.dock.setIcon(path.join(__dirname, 'logo.png'));
+  }
 
   // and load the index.html of the app.
   if (MAIN_WINDOW_VITE_DEV_SERVER_URL) {
