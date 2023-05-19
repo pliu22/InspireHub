@@ -90,3 +90,6 @@ typings/
 
 # Electron-Forge
 out/
+
+# Electron-config
+.electron-config/
