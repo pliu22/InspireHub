@@ -1,14 +1,11 @@
-/*
- * @Date: 2023-05-18 12:39:20
- * @LastEditors: aei(imaei@foxmail.com)
- * @LastEditTime: 2023-05-18 12:39:39
- * @FilePath: \InspireHub\src\app.js
- * @description: 
- */
-import * as ReactDOM from 'react-dom';
+import ReactDOM from 'react-dom/client';
+import { router } from "./router/router";
+import { 
+  RouterProvider,
+} from "react-router-dom";
 
-function render() {
-  ReactDOM.render(<h2>Hello from React!</h2>, document.body);
-}
 
-render();
+
+ReactDOM.createRoot(document.getElementById("root")!).render(
+    <RouterProvider router={router} />
+);
