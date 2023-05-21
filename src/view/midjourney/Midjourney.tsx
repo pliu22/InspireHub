@@ -8,7 +8,7 @@ export default function Midjourney() {
 
   return (
     <Container>
-        middjourney
+      <h1>middjourney</h1>
     </Container>
   );
 }

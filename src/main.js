@@ -22,7 +22,7 @@ const createWindow = () => {
       preload: path.join(__dirname, 'preload.js'),
     },
     icon: path.join(__dirname, 'logo.png'),
-    frame: false,
+    
   });
   console.log(__dirname)
   // macOS
@@ -39,6 +39,9 @@ const createWindow = () => {
 
   // Open the DevTools.
   mainWindow.webContents.openDevTools();
+
+  // clear menubar
+  mainWindow.setMenuBarVisibility(false);
 };
 
 // This method will be called when Electron has finished

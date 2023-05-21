@@ -1,24 +1,21 @@
 import { baseInstance } from "./request";
-import { chatGPT, proxy } from "../config/config.json";
+import { chatGPT } from "../../.electron-config/config.json";
 
-type defalutChatMsgModel = {
-    role: string,
+export type defalutChatMsgModel = {
+    role: 'user' | 'system' | 'assistant',
     content: string,
 }
 
-export function postDefalutChat(messages: defalutChatMsgModel[]) {
-    baseInstance.post("https://api.openai.com/v1/chat/completions",{
+export async function postDefalutChat(messages: defalutChatMsgModel[]) {
+    const res = await baseInstance.post("https://api.openai.com/v1/chat/completions",{
         model: "gpt-3.5-turbo",
         messages,
     }, {
         headers: {
             "Content-Type": "application/json",
-            "Authorization": "Bearer $OPENAI_API_KEY" + chatGPT.auth.apikey
+            "Authorization": "Bearer " + chatGPT.auth.apikey
         },
-        proxy: {
-            host: proxy.host,
-            port: proxy.port
-        }
     });
+    return res;
 }
 
