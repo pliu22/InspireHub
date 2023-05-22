@@ -8,6 +8,7 @@ const Container = styled.div`
   height: 100%;
   display: flex;
   justify-content: center;
+  overflow: hidden;
   .chatBox {
     position: fixed;
     bottom: 30px;
@@ -17,7 +18,9 @@ const Container = styled.div`
 
 const ChatBox = styled.div`
   font-size: 20px;
-  overflow-y: scroll;
+  height: 100%;
+  width: 100%;
+  overflow-y: visible;
   div {
     padding: 10px;
   }
@@ -51,13 +54,14 @@ export default function ChatGPT() {
       }
       newChatList[currentIndex].status = "done";
       console.log(res.data);
-      newChatList[currentIndex].answer.content = res.data?.choices[0]?.message.content || '暂无回复';
+      newChatList[currentIndex].answer.content =
+        res.data?.choices[0]?.message.content || "暂无回复";
       setChatList(newChatList);
     } catch (error) {
       newChatList[currentIndex].status = "error";
       newChatList[currentIndex].answer.content = "出现错误";
       setChatList(newChatList);
-      console.log('catch error: ', error)
+      console.log("catch error: ", error);
     }
   }
   // parse the chatList
@@ -126,11 +130,18 @@ export default function ChatGPT() {
           onChange={(e) => {
             setTextValue(e.currentTarget.value);
           }}
+          onKeyDown={(e) => {
+            if (e.key === "Enter") {
+              submitQuestion();
+            }
+          }}
+          size="large"
         />
         <Button
           type="primary"
           onClick={submitQuestion}
           disabled={textValue === ""}
+          size="large"
         >
           提交
         </Button>

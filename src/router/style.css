@@ -1,0 +1,17 @@
+.tab {
+    width: 100%;
+    height: 90%;
+}
+/* especially for midjourney view */
+.ant-tabs-tabpane {
+    padding-left: 0px !important;
+    height: 100%  !important;
+    overflow-y: hidden;
+}
+.ant-tabs {
+    width: 100%;
+    height: 100%;
+}
+.ant-tabs-content {
+    height: 100%;
+}

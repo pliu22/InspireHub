@@ -1,14 +1,20 @@
 import styled from 'styled-components'
 
 const Container = styled.div` 
-
+ width: 100%;
+ height: 100%;
+  webview {
+    width: 100%;
+    height: 100%;
+    display: inline-flex;
+  }
 `
 
 export default function Midjourney() {
 
   return (
     <Container>
-      <h1>middjourney</h1>
+      <webview  src=" http://discord.gg/midjourney"></webview>
     </Container>
   );
 }

@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import ChatGPT from '../view/chatGPT/ChatGPT';
 import Midjourney from '../view/midjourney/Midjourney';
 import Setting from '../view/setting/Setting';
-
+import './style.css'
 type TabPosition = 'left' | 'right' | 'top' | 'bottom';
 
 const items: TabsProps['items'] = [
@@ -28,6 +28,7 @@ const items: TabsProps['items'] = [
 export default function Routers() {
   return (
     <Tabs 
+    className='tab'
     tabPosition='left'
     size='large'
     defaultActiveKey="1" items={items} />

@@ -1,7 +1,6 @@
 import ReactDOM from "react-dom/client";
 import {  } from "antd";
 import styled from "styled-components";
-import { useEffect, useState } from "react";
 import Routers from "./router/router";
 
 
@@ -12,13 +11,9 @@ const Container = styled.div`
 `;
 
 function App() {
-  const [current, setCurrent] = useState("chatGPT");
-  useEffect(() => {
-    // nav('/chatGPT')
-  }, [current]);
   return (
     <Container>
-      <Routers />
+       <Routers /> 
     </Container>
   );
 }

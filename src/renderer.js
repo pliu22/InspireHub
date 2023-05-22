@@ -30,4 +30,7 @@ import './app'
 import './index.css';
 
 
-console.log('👋 This message is being logged by "renderer.js", included via Vite');
+window.electronAPI.onLoadUserSetting((event, value) => {
+    console.log('render load user ->', value)
+    event.sender.send('loaded-user-setting', 'ok')
+})
