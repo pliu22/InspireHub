@@ -1,8 +1,13 @@
+import styled from "styled-components";
+
+const Container = styled.div`
+
+`;
 
 export default function Setting() {
     return (
-        <>
-            <h1>Setting</h1>
-        </>
+       <Container>
+        Setting
+       </Container>
     )
 }
