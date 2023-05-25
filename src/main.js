@@ -5,7 +5,7 @@
  * @FilePath: \InspireHub\src\main.js
  * @description:
  */
-const { app, BrowserWindow } = require("electron");
+const { app, BrowserWindow,  globalShortcut} = require("electron");
 const path = require("path");
 import { Rpc } from "./rpc/rpc.js";
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
@@ -75,6 +75,22 @@ app.on("activate", () => {
     createWindow();
   }
 });
+
+// shortcut 
+app.whenReady().then(() => {
+  globalShortcut.register('CommandOrControl+Shift+a', () => {
+    console.log('CommandOrControl+Shift+a is pressed')
+    // is system is mac then reactive the window
+    if (process.platform === 'darwin') {
+      app.dock.show()
+    }
+    // active the window in windows
+    BrowserWindow.getAllWindows().forEach((win) => {
+      win.show()
+    } )
+  })
+})
+
 
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and import them here.
