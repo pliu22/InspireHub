@@ -1,10 +1,3 @@
-/*
- * @Date: 2023-05-17 23:28:02
- * @LastEditors: aei(imaei@foxmail.com)
- * @LastEditTime: 2023-05-18 13:22:27
- * @FilePath: \InspireHub\src\main.js
- * @description:
- */
 const { app, BrowserWindow,  globalShortcut} = require("electron");
 const path = require("path");
 import { Rpc } from "./rpc/rpc.js";
@@ -85,9 +78,9 @@ app.whenReady().then(() => {
       app.dock.show()
     }
     // active the window in windows
-    BrowserWindow.getAllWindows().forEach((win) => {
-      win.show()
-    } )
+    // BrowserWindow.getAllWindows().forEach((win) => {
+    //   win.show()
+    // })
   })
 })
 
