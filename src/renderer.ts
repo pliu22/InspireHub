@@ -29,7 +29,7 @@
 import './app'
 import './index.css';
 
-
+// @ts-ignore
 window.electronAPI.onLoadUserSetting((event, value) => {
     console.log('render load user ->', value)
     event.sender.send('loaded-user-setting', 'ok')

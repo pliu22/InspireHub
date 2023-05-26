@@ -1,15 +1,10 @@
-const { ipcMain, BrowserWindow } = require("electron");
-import { getUserSetting } from "../store/index.js";
+import { ipcMain, BrowserWindow } from "electron";
+import { getUserSetting } from "../store/index.ts";
+
 
 export class Rpc {
-  /**
-   * @type { BrowserWindow } mainWindow
-   */
-  mainWindow;
-  /**
-   * @param {BrowserWindow} mainWindow
-   */
-  constructor(mainWindow) {
+  mainWindow: BrowserWindow;
+  constructor(mainWindow: BrowserWindow) {
     this.mainWindow = mainWindow;
   }
   loadUserSetting() {
