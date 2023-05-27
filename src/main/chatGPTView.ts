@@ -1,10 +1,12 @@
 import { BrowserWindow, screen }  from 'electron'
 const path = require('path')
+declare const MAIN_WINDOW_VITE_DEV_SERVER_URL: string;
+
 
 
 export default function createGPTFloatWindow() {
-  let win2:  BrowserWindow | null //悬浮球
-  win2 = new BrowserWindow({
+  let gptFloatWindow:  BrowserWindow | null //悬浮球
+  gptFloatWindow = new BrowserWindow({
       width: 120, 
       height: 120,
       type: 'toolbar',    //创建的窗口类型为工具栏窗口
@@ -20,18 +22,19 @@ export default function createGPTFloatWindow() {
   });
   //通过获取用户屏幕的宽高来设置悬浮球的初始位置
   const { left, top } = { left: screen.getPrimaryDisplay().workAreaSize.width - 160, top: screen.getPrimaryDisplay().workAreaSize.height - 160 }
-  win2.setPosition(left, top) //设置悬浮球位置
-  
-  win2.loadURL(path.join(__dirname, './renderer/viewGPT/index.html'));
+  gptFloatWindow.setPosition(left, top) //设置悬浮球位置
+  gptFloatWindow.loadURL(MAIN_WINDOW_VITE_DEV_SERVER_URL + '/gptFloat');
 
-  win2.once('ready-to-show', () => {
-    win2!.show()
+  gptFloatWindow.once('ready-to-show', () => {
+    gptFloatWindow!.show()
   });
 
-  win2.on('close', () => {
-    win2 = null;
+  gptFloatWindow.on('close', () => {
+    gptFloatWindow = null;
   })
 
-  return win2
+  gptFloatWindow.webContents.openDevTools();
+
+  return gptFloatWindow
 }
 

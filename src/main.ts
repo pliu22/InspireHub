@@ -1,7 +1,12 @@
 import { app, BrowserWindow, globalShortcut } from "electron";
 import path from "path";
-import { Rpc } from "../rpc/rpc.ts";
-import createGPTFloatWindow from "./chatGPTView.ts";
+import { Rpc } from "./rpc/rpc.ts";
+import createGPTFloatWindow from "./main/chatGPTView.ts";
+declare const MAIN_WINDOW_VITE_DEV_SERVER_URL: string;
+declare const MAIN_WINDOW_VITE_NAME: string;
+
+console.log(MAIN_WINDOW_VITE_NAME, MAIN_WINDOW_VITE_DEV_SERVER_URL)
+
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
 if (require("electron-squirrel-startup")) {
   app.quit();
@@ -24,14 +29,10 @@ const createWindow = () => {
   }
 
   // and load the index.html of the app.
-  // ignore the test of type
-  // @ts-ignore
   if (MAIN_WINDOW_VITE_DEV_SERVER_URL) {
-    // @ts-ignore
     mainWindow.loadURL(MAIN_WINDOW_VITE_DEV_SERVER_URL);
   } else {
     mainWindow.loadFile(
-      // @ts-ignore
       path.join(__dirname, `../renderer/${MAIN_WINDOW_VITE_NAME}/index.html`)
     );
   }
@@ -73,6 +74,9 @@ app.on("activate", () => {
   }
 });
 
+// floatWindow
+let floatWindow: BrowserWindow | null = null;
+
 // shortcut
 app.whenReady().then(() => {
   globalShortcut.register("CommandOrControl+Shift+a", () => {
@@ -85,7 +89,13 @@ app.whenReady().then(() => {
     // BrowserWindow.getAllWindows().forEach((win) => {
     //   win.show()
     // })
-    createGPTFloatWindow();
+    if(floatWindow) {
+      console.log('close float window')
+      floatWindow.close()
+      floatWindow = null
+    } else {
+      floatWindow = createGPTFloatWindow();
+    }
   });
 });
 
