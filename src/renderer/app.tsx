@@ -1,5 +1,4 @@
 import ReactDOM from "react-dom/client";
-import {  } from "antd";
 import styled from "styled-components";
 import Routers from "./router/router";
 

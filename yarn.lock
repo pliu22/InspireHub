@@ -975,9 +975,9 @@
     "@babel/helper-plugin-utils" "^7.21.5"
 
 "@babel/preset-env@^7.20.2":
-  version "7.22.1"
-  resolved "https://registry.yarnpkg.com/@babel/preset-env/-/preset-env-7.22.1.tgz#4cbce15b97a279f206aee9d85bb77263c8f35d46"
-  integrity sha512-jAKppxizRS4oCSxC8RU/5By5fAzaQHuCy4vpZ55FM+iN7Fc7PQrpY9f1uTDL1hTgevU2TUbhUcKHXpqMYTzw9w==
+  version "7.22.2"
+  resolved "https://registry.yarnpkg.com/@babel/preset-env/-/preset-env-7.22.2.tgz#cefeabcb22abb098f6dda52b8b9b107374892cfd"
+  integrity sha512-UPNK9pgphMULvA2EMKIWHU90C47PKyuvQ8pE1MzH7l9PgFcRabdrHhlePpBuWxYZQ+TziP2nycKoI5C1Yhdm9Q==
   dependencies:
     "@babel/compat-data" "^7.22.0"
     "@babel/helper-compilation-targets" "^7.22.1"
@@ -1054,7 +1054,7 @@
     "@babel/plugin-transform-unicode-sets-regex" "^7.22.0"
     "@babel/preset-modules" "^0.1.5"
     "@babel/types" "^7.22.0"
-    babel-plugin-polyfill-corejs2 "^0.4.1"
+    babel-plugin-polyfill-corejs2 "^0.4.2"
     babel-plugin-polyfill-corejs3 "^0.8.1"
     babel-plugin-polyfill-regenerator "^0.5.0"
     core-js-compat "^3.30.2"
@@ -1778,14 +1778,14 @@
   integrity sha512-K0VQKziLUWkVKiRVrx4a40iPaxTUefQmjtkQofBkYRcoaaL/8rhwDWww9qWbrgicNOgnpIsMxyNIUM4+n6dUIA==
 
 "@types/node@*":
-  version "20.2.4"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-20.2.4.tgz#e6c3345f7ed9c6df41fdc288a94e2633167bc15d"
-  integrity sha512-ni5f8Xlf4PwnT/Z3f0HURc3ZSw8UyrqMqmM3L5ysa7VjHu8c3FOmIo1nKCcLrV/OAmtf3N4kFna/aJqxsfEtnA==
+  version "20.2.5"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-20.2.5.tgz#26d295f3570323b2837d322180dfbf1ba156fefb"
+  integrity sha512-JJulVEQXmiY9Px5axXHeYGLSjhkZEnD+MDPDGbCbIAbMslkKwmygtZFy1X6s/075Yo94sf8GuSlFfPzysQrWZQ==
 
 "@types/node@^18.11.18":
-  version "18.16.15"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-18.16.15.tgz#cdc55df400109c2c1a80c98fc9cec4bd3f1097e2"
-  integrity sha512-fv9H0101Lom0m76x5UekmudO0Vu611ElbTCLOeSbyX5WM6sme3gJ10PHP83pA1/eXbZpnDoTkeY40jykH38ptQ==
+  version "18.16.16"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-18.16.16.tgz#3b64862856c7874ccf7439e6bab872d245c86d8e"
+  integrity sha512-NpaM49IGQQAUlBhHMF82QH80J08os4ZmyF9MkpCzWAGuOHqE4gTEbhzd7L3l5LmWuZ6E0OiC1FweQ4tsiW35+g==
 
 "@types/prop-types@*":
   version "15.7.5"
@@ -2053,10 +2053,10 @@ axios@^1.4.0:
     form-data "^4.0.0"
     proxy-from-env "^1.1.0"
 
-babel-plugin-polyfill-corejs2@^0.4.1:
-  version "0.4.2"
-  resolved "https://registry.yarnpkg.com/babel-plugin-polyfill-corejs2/-/babel-plugin-polyfill-corejs2-0.4.2.tgz#147295bbd078f731617be5947bc8536cf8b339d0"
-  integrity sha512-hnfNY+kHQc4227pQJ9gzziiF9iDOzccPKlisfH1+B9EZrC36V+JcwSApxZsj6tD2jbBthKO3l4XpQeCVa2pRbQ==
+babel-plugin-polyfill-corejs2@^0.4.2:
+  version "0.4.3"
+  resolved "https://registry.yarnpkg.com/babel-plugin-polyfill-corejs2/-/babel-plugin-polyfill-corejs2-0.4.3.tgz#75044d90ba5043a5fb559ac98496f62f3eb668fd"
+  integrity sha512-bM3gHc337Dta490gg+/AseNB9L4YLHxq1nGKZZSHbhXv4aTYU2MD2cjza1Ru4S6975YLTaL1K8uJf6ukJhhmtw==
   dependencies:
     "@babel/compat-data" "^7.17.7"
     "@babel/helper-define-polyfill-provider" "^0.4.0"
@@ -2751,9 +2751,9 @@ electron-store@^8.1.0:
     type-fest "^2.17.0"
 
 electron-to-chromium@^1.4.284:
-  version "1.4.408"
-  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.4.408.tgz#73e657a24bd0b7481d68c943dded0d097b0d0a52"
-  integrity sha512-vjeaj0u/UYnzA/CIdGXzzcxRLCqRwREYc9YfaWInjIEr7/XPttZ6ShpyqapchEy0S2r6LpLjDBTnNj7ZxnxJKg==
+  version "1.4.411"
+  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.4.411.tgz#8cb7787f0442fcb4209590e9951bdb482caa93b2"
+  integrity sha512-5VXLW4Qw89vM2WTICHua/y8v7fKGDRVa2VPOtBB9IpLvW316B+xd8yD1wTmLPY2ot/00P/qt87xdolj4aG/Lzg==
 
 electron-winstaller@^5.0.0:
   version "5.1.0"

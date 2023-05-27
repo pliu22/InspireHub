@@ -2,7 +2,7 @@ import { Button, Input, Space } from "antd";
 import { useEffect, useState } from "react";
 import styled from "styled-components";
 import { chatModel } from "./model";
-import { postDefalutChat, defalutChatMsgModel } from "../../api/chatGPT";
+import { postDefalutChat, defalutChatMsgModel } from "../../../api/chatGPT";
 
 const Container = styled.div`
   height: 100%;
