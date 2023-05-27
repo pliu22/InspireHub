@@ -1,6 +1,7 @@
-import {app, BrowserWindow,  globalShortcut} from "electron"
+import { app, BrowserWindow, globalShortcut } from "electron";
 import path from "path";
-import { Rpc } from "./rpc/rpc.ts";
+import { Rpc } from "../rpc/rpc.ts";
+import createGPTFloatWindow from "./chatGPTView.ts";
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
 if (require("electron-squirrel-startup")) {
   app.quit();
@@ -13,7 +14,7 @@ const createWindow = () => {
     height: 600,
     icon: path.join(__dirname, "logo.png"),
     webPreferences: {
-      preload: path.join(__dirname, "preload.js"),
+      preload: path.join(__dirname, "./preload.js"),
       webviewTag: true,
     },
   });
@@ -26,11 +27,11 @@ const createWindow = () => {
   // ignore the test of type
   // @ts-ignore
   if (MAIN_WINDOW_VITE_DEV_SERVER_URL) {
-  // @ts-ignore
+    // @ts-ignore
     mainWindow.loadURL(MAIN_WINDOW_VITE_DEV_SERVER_URL);
   } else {
     mainWindow.loadFile(
-    // @ts-ignore
+      // @ts-ignore
       path.join(__dirname, `../renderer/${MAIN_WINDOW_VITE_NAME}/index.html`)
     );
   }
@@ -43,12 +44,11 @@ const createWindow = () => {
 
   // rpc
   const rpc = new Rpc(mainWindow);
-  
-  // ready-to-show life
-  mainWindow.once('ready-to-show', () => {
-    rpc.loadUserSetting();
-  })
 
+  // ready-to-show life
+  mainWindow.once("ready-to-show", () => {
+    rpc.loadUserSetting();
+  });
 };
 
 // This method will be called when Electron has finished
@@ -73,21 +73,21 @@ app.on("activate", () => {
   }
 });
 
-// shortcut 
+// shortcut
 app.whenReady().then(() => {
-  globalShortcut.register('CommandOrControl+Shift+a', () => {
-    console.log('CommandOrControl+Shift+a is pressed')
+  globalShortcut.register("CommandOrControl+Shift+a", () => {
+    console.log("CommandOrControl+Shift+a is pressed");
     // is system is mac then reactive the window
-    if (process.platform === 'darwin') {
-      app.dock.show()
+    if (process.platform === "darwin") {
+      app.dock.show();
     }
     // active the window in windows
     // BrowserWindow.getAllWindows().forEach((win) => {
     //   win.show()
     // })
-  })
-})
-
+    createGPTFloatWindow();
+  });
+});
 
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and import them here.
