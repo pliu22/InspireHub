@@ -19,3 +19,12 @@ export async function postDefalutChat(messages: defalutChatMsgModel[]) {
     return res;
 }
 
+export async function getMOdelList() {
+    const res = await baseInstance.get("https://api.openai.com/v1/models", {
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": "Bearer " + chatGPT.auth.apikey
+        },
+    });
+    return res;
+}

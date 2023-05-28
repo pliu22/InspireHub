@@ -1,7 +1,6 @@
 import ReactDOM from "react-dom/client";
 import styled from "styled-components";
 import Routers from "./router/router";
-import ChatGPTFloat from "./view/chatGPTFloat/ChatGPTFloat";
 
 
 const Container = styled.div`
@@ -11,10 +10,6 @@ const Container = styled.div`
 `;
 
 function App() { 
-  console.log(window.location.pathname)
-  if(window.location.pathname === '/gptFloat'){
-    return <ChatGPTFloat/>
-  }
   return (
     <Container>
        <Routers /> 

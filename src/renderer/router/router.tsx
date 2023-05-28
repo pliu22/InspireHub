@@ -1,11 +1,10 @@
-import type { RadioChangeEvent, TabsProps } from 'antd';
-import { Radio, Space, Tabs } from 'antd';
-import React, { useState } from 'react';
+import type { TabsProps } from 'antd';
+import { Tabs } from 'antd';
 import ChatGPT from '../view/chatGPT/ChatGPT';
 import Midjourney from '../view/midjourney/Midjourney';
 import Setting from '../view/setting/Setting';
 import './style.css'
-type TabPosition = 'left' | 'right' | 'top' | 'bottom';
+import ChatGPTFloat from '../view/chatGPTFloat/ChatGPTFloat';
 
 const items: TabsProps['items'] = [
   {
@@ -26,6 +25,9 @@ const items: TabsProps['items'] = [
 ];
 
 export default function Routers() {
+  if(window.location.pathname === '/gptFloat') {
+    return <ChatGPTFloat/>
+  }
   return (
     <Tabs 
     className='tab'
