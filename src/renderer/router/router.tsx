@@ -5,6 +5,7 @@ import Midjourney from '../view/midjourney/Midjourney';
 import Setting from '../view/setting/Setting';
 import './style.css'
 import ChatGPTFloat from '../view/chatGPTFloat/ChatGPTFloat';
+import ChatGPTWeb from '../view/chatGPTWeb/ChatGPTWeb';
 
 const items: TabsProps['items'] = [
   {
@@ -13,12 +14,17 @@ const items: TabsProps['items'] = [
     children: <ChatGPT/>,
   },
   {
+    key: '3',
+    label: `🤖 ChatGPT Online`,
+    children: <ChatGPTWeb/>,
+  },
+  {
     key: '2',
     label: `🏞️ midjourney`,
     children: <Midjourney/>,
   },
   {
-    key: '3',
+    key: '4',
     label: `⚙️ 设置`,
     children: <Setting/>,
   },
@@ -33,6 +39,7 @@ export default function Routers() {
     className='tab'
     tabPosition='left'
     size='large'
-    defaultActiveKey="1" items={items} />
+    defaultActiveKey="1" items={items} 
+    />
   );
 };
