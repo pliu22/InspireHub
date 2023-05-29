@@ -1,6 +1,5 @@
 import type { TabsProps } from 'antd';
 import { Tabs } from 'antd';
-import ChatGPT from '../view/chatGPT/ChatGPT';
 import Midjourney from '../view/midjourney/Midjourney';
 import Setting from '../view/setting/Setting';
 import './style.css'
@@ -10,11 +9,6 @@ import ChatGPTWeb from '../view/chatGPTWeb/ChatGPTWeb';
 const items: TabsProps['items'] = [
   {
     key: '1',
-    label: `🤖 ChatGPT `,
-    children: <ChatGPT/>,
-  },
-  {
-    key: '3',
     label: `🤖 ChatGPT Online`,
     children: <ChatGPTWeb/>,
   },

@@ -2,7 +2,7 @@
 
 1. chatGPT部分
 
-    1. 流式相应 stream response
+    1. 流式响应 stream response
 
     2. 文本识别和样式处理（识别代码块和片段）
 
