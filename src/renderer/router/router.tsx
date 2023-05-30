@@ -5,17 +5,23 @@ import Setting from '../view/setting/Setting';
 import './style.css'
 import ChatGPTFloat from '../view/chatGPTFloat/ChatGPTFloat';
 import ChatGPTWeb from '../view/chatGPTWeb/ChatGPTWeb';
+import { AzureVoice } from '../view/azureVoice/AzureVoice';
 
 const items: TabsProps['items'] = [
   {
     key: '1',
-    label: `🤖 ChatGPT Online`,
+    label: `🤖 ChatGPT`,
     children: <ChatGPTWeb/>,
   },
   {
     key: '2',
     label: `🏞️ midjourney`,
     children: <Midjourney/>,
+  },
+  {
+    key: '3',
+    label: `🤖 ChatGPTFloat`,
+    children: <AzureVoice/>,
   },
   {
     key: '4',
