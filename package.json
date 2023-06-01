@@ -28,6 +28,7 @@
     "electron": "24.3.0"
   },
   "dependencies": {
+    "@ant-design/icons": "^5.1.4",
     "@vitejs/plugin-react": "^4.0.0",
     "antd": "^5.5.0",
     "axios": "^1.4.0",

@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { forwardRef, useEffect, useRef, useState, useImperativeHandle } from "react";
 import styled from "styled-components";
 
 const Container = styled.div`
@@ -25,11 +25,34 @@ const Container = styled.div`
   }
 `;
 
-export default function ChatGPTWeb() {
+export const ChatGPTWeb =  forwardRef((props, ref) => {
   // webviewDom
   let webviewRef = useRef<any>(null);
 
   const [showFloatBox, setShowFloatBox] = useState(false);
+
+  const [promptList, setPromptList] = useState<any>();
+
+  // load userSetting
+  useEffect(() => {
+    updateUserSetting()
+  }, []);
+ 
+  // update userSetting
+  const updateUserSetting = () => {
+    console.log("updateUserSetting");
+    const userSetting = JSON.parse(
+      window.localStorage.getItem("userSetting") || "{}"
+    );
+    setPromptList(
+      userSetting?.chatGPT?.prompts
+    );
+  } 
+
+  useImperativeHandle(
+    ref,
+    () => ({ updateUserSetting })
+  );
 
   useEffect(() => {
     webviewRef.current.addEventListener("did-fail-load", (error: Error) => {
@@ -47,7 +70,7 @@ export default function ChatGPTWeb() {
   });
 
   function assemblePrompt() {
-    webviewRef.current.send("assemblePrompt", "你好");
+    webviewRef.current.send("assemblePrompt", promptList[0].value);
     console.log("assemblePrompt 1");
   }
 
@@ -55,7 +78,7 @@ export default function ChatGPTWeb() {
     <Container>
       {showFloatBox && (
         <div className="float-box" onClick={assemblePrompt}>
-          悬浮框
+          翻译官
         </div>
       )}
       <webview
@@ -65,4 +88,4 @@ export default function ChatGPTWeb() {
       ></webview>
     </Container>
   );
-}
+})

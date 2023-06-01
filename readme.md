@@ -16,7 +16,7 @@
 
 ### ChatGPT工具
 
--  chat聊天悬浮框（F3快捷键开启或关闭）
+-  chat聊天悬浮框（ctrl+shift+a 快捷键开启或关闭）
 
 - 多场景预设AI助手 
 

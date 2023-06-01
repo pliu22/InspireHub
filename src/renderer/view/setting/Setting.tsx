@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react";
+import { Button } from "antd";
+import { DeleteOutlined } from "@ant-design/icons";
 import styled from "styled-components";
 
 const Container = styled.div`
@@ -20,6 +22,35 @@ const Container = styled.div`
       border-radius: 1px;
     }
   }
+  .prompts {
+    display: flex;
+    flex-direction: column;
+
+    .prompt-box {
+      border: #66666650 1px solid;
+      border-radius: 8px;
+      padding: 8px 12px;
+      position: relative;
+      margin-bottom: 12px;
+      div:first-child {
+        font-size: 16px;
+        font-weight: bold;
+        color: #343541;
+      }
+      button {
+        position: absolute;
+        top: 8px;
+        right: 12px;
+      }
+    }
+  }
+  .save-btn {
+    position: fixed;
+    bottom: 20px;
+    left: 0;
+    width: 50%;
+    left: calc(25% + 72px);
+  }
 `;
 
 export default function Setting() {
@@ -37,13 +68,27 @@ export default function Setting() {
       <div className="prompts">
         {userSetting?.chatGPT?.prompts?.map((item: any) => {
           return (
-            <>
+            <div className="prompt-box">
               <div>{item.name}</div>
               <div>{item.value}</div>
-            </>
+              <Button danger size="small" type="text">
+                <DeleteOutlined />
+              </Button>
+            </div>
           );
         })}
+        <Button
+          style={{
+            margin: "10px 0",
+          }}
+          block
+        >
+          添加新模型
+        </Button>
       </div>
+      <Button className="save-btn" type="primary" size="large" block>
+        保存
+      </Button>
     </Container>
   );
 }
