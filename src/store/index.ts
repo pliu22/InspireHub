@@ -1,4 +1,5 @@
 import Store from 'electron-store'
+import defalutSetting from './defalutSetting.json'
 
 const store = new Store();
 
@@ -16,15 +17,12 @@ const store = new Store();
 
 export function getUserSetting() {
     const data = store.get('user.customSetting')
+    if(!data) {
+        store.set('user.customSetting', defalutSetting)
+        return defalutSetting
+    }
     return data;
 }
-//=> '🦄'
-
-// setTimeout(() => {
-// store.delete('user.customSetting');
-// console.log(store.get('unicorn'));
-// }, 1000);
-//=> undefined
 
 module.exports = {
     getUserSetting

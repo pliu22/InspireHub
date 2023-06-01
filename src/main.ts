@@ -1,7 +1,7 @@
 import { app, BrowserWindow, globalShortcut } from "electron";
 import path from "path";
 import { Rpc } from "./rpc/rpc.ts";
-import createGPTFloatWindow from "./main/chatGPTView.ts";
+import createGPTFloatWindow from "./main/chatGptFloatView.ts";
 declare const MAIN_WINDOW_VITE_DEV_SERVER_URL: string;
 declare const MAIN_WINDOW_VITE_NAME: string;
 
@@ -96,6 +96,12 @@ app.whenReady().then(() => {
     } else {
       floatWindow = createGPTFloatWindow();
     }
+  });
+});
+
+app.on('web-contents-created', (_event, contents) => {
+  contents.on('will-attach-webview', (_wawevent, webPreferences, _params) => {
+    webPreferences.preload = path.join(__dirname, "./chatGptWebPreload.js");
   });
 });
 

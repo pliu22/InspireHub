@@ -1,6 +1,5 @@
 import { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
-import { SetInputValue } from "../../script/chatGptWeb";
 
 const Container = styled.div`
   width: 100%;
@@ -27,26 +26,43 @@ const Container = styled.div`
 `;
 
 export default function ChatGPTWeb() {
-
   // webviewDom
   let webviewRef = useRef<any>(null);
 
-  const [showFloatBox, setShowFloatBox] = useState(false)
+  const [showFloatBox, setShowFloatBox] = useState(false);
 
   useEffect(() => {
     webviewRef.current.addEventListener("did-fail-load", (error: Error) => {
       console.log(error);
     });
-    webviewRef.current.addEventListener("did-finish-load", () => {
-      console.log("loaded");
-      setShowFloatBox(true)
+    webviewRef.current.addEventListener("did-finish-load", (event: any) => {
+      console.log("loaded", event);
+      // webviewRef.current.openDevTools();
+      webviewRef.current.addEventListener('ipc-message', (event: any) => {
+        console.log('ipc-message', event)
+        // Prints "xxxx"
+      })
+      setShowFloatBox(true);
     });
   });
 
+  function assemblePrompt() {
+    webviewRef.current.send("assemblePrompt", "你好");
+    console.log("assemblePrompt 1");
+  }
+
   return (
     <Container>
-      {showFloatBox && <div className="float-box" onClick={() => SetInputValue("你现在是一个小猫")}>悬浮框</div>}
-      <webview ref={webviewRef} src="https://chat.openai.com/"></webview>
+      {showFloatBox && (
+        <div className="float-box" onClick={assemblePrompt}>
+          悬浮框
+        </div>
+      )}
+      <webview
+        nodeintegration
+        ref={webviewRef}
+        src="https://chat.openai.com/"
+      ></webview>
     </Container>
   );
 }

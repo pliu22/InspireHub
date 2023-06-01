@@ -46,6 +46,10 @@ module.exports = {
             entry: 'src/main/preload.ts',
             config: 'vite.preload.config.mjs',
           },
+          {
+            entry: 'src/main/script/chatGptWebPreload.ts',
+            config: 'vite.preload.config.mjs',
+          }
         ],
         renderer: [
           {

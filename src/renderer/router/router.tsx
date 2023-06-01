@@ -3,8 +3,8 @@ import { Tabs } from 'antd';
 import Midjourney from '../view/midjourney/Midjourney';
 import Setting from '../view/setting/Setting';
 import './style.css'
-import ChatGPTFloat from '../view/chatGPTFloat/ChatGPTFloat';
-import ChatGPTWeb from '../view/chatGPTWeb/ChatGPTWeb';
+import ChatGPTFloat from '../view/chatGptFloat/ChatGptFloat';
+import ChatGPTWeb from '../view/chatGptWeb/ChatGptWeb';
 import { AzureVoice } from '../view/azureVoice/AzureVoice';
 
 const items: TabsProps['items'] = [
@@ -20,7 +20,7 @@ const items: TabsProps['items'] = [
   },
   {
     key: '3',
-    label: `🤖 ChatGPTFloat`,
+    label: `🦜 语音合成`,
     children: <AzureVoice/>,
   },
   {
@@ -34,12 +34,20 @@ export default function Routers() {
   if(window.location.pathname === '/gptFloat') {
     return <ChatGPTFloat/>
   }
+  function changeTab(val : any) {
+    items!.forEach((item) => {
+      if(item.key === val) {
+        
+      }
+    })
+  }
   return (
     <Tabs 
     className='tab'
     tabPosition='left'
     size='large'
     defaultActiveKey="1" items={items} 
+    onChange={changeTab}
     />
   );
 };

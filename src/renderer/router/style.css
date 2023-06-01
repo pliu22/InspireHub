@@ -15,3 +15,20 @@
 .ant-tabs-content {
     height: 100%;
 }
+.ant-tabs-nav {
+    background-color: #202123;
+    color: aliceblue;
+    transition: .5S;
+}
+.ant-tabs-tab-active {
+    border-radius: 5px !important;
+    background: #343541 !important;
+    transform: scale(0.9) !important;
+    transition: .5s;
+}
+.ant-tabs-nav-list {
+    padding-top: 10px;
+}
+.ant-tabs-ink-bar {
+    visibility: hidden !important;
+}

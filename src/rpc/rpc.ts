@@ -8,7 +8,8 @@ export class Rpc {
     this.mainWindow = mainWindow;
   }
   loadUserSetting() {
-    this.mainWindow.webContents.send("load-user-setting", 1);
+    const data = getUserSetting();
+    this.mainWindow.webContents.send("load-user-setting", data);
     ipcMain.on('loaded-user-setting',  (_event, value) => {
         console.log('loaded-user-setting -> ', value) // 将打印到 Node 控制台
       })
