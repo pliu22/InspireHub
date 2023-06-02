@@ -5,6 +5,9 @@ import styled from "styled-components";
 
 const Container = styled.div`
   padding: 24px;
+  box-sizing: border-box;
+  overflow-y: auto;
+  height: 100%;
   .setting-title {
     span {
       color: #343541;
@@ -25,8 +28,10 @@ const Container = styled.div`
   .prompts {
     display: flex;
     flex-direction: column;
-
     .prompt-box {
+      background-color: #f7f7f8;
+      // 向下的卡片阴影
+      box-shadow: 0 2px 8px #66666650;
       border: #66666650 1px solid;
       border-radius: 8px;
       padding: 8px 12px;
@@ -43,6 +48,9 @@ const Container = styled.div`
         right: 12px;
       }
     }
+  }
+  .last-box {
+    margin-bottom: 30px;
   }
   .save-btn {
     position: fixed;
@@ -86,6 +94,7 @@ export default function Setting() {
           添加新模型
         </Button>
       </div>
+      <div className="last-box"></div>
       <Button className="save-btn" type="primary" size="large" block>
         保存
       </Button>

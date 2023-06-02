@@ -17,11 +17,12 @@ const Container = styled.div`
     width: 100px;
     height: 100px;
     background-color: #fff;
-    border-radius: 50%;
+    border-radius: 30px;
     box-shadow: 0 0 10px #ccc;
     display: flex;
     justify-content: center;
     align-items: center;
+    overflow-y: scroll;
     cursor: pointer;
   }
 `;

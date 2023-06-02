@@ -1,4 +1,10 @@
-import { forwardRef, useEffect, useRef, useState, useImperativeHandle } from "react";
+import {
+  forwardRef,
+  useEffect,
+  useRef,
+  useState,
+  useImperativeHandle,
+} from "react";
 import styled from "styled-components";
 
 const Container = styled.div`
@@ -12,20 +18,37 @@ const Container = styled.div`
   .float-box {
     position: fixed;
     top: 30px;
-    right: 50px;
-    width: 100px;
-    height: 100px;
+    right: 10px;
+    width: 150px;
+    max-height: 150px;
     background-color: #fff;
-    border-radius: 50%;
+    border-radius: 5px;
     box-shadow: 0 0 10px #ccc;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
+    flex-direction: column;
+    overflow-y: auto;
+    overflow-x: hidden;
+    div {
+      width: 100%;
+      color: #202123;
+      cursor: pointer;
+      text-align: center;
+      margin: 4px 0;
+      font-size: 12px;
+      font-weight: 600;
+    }
+    div:not(:last-child):after {
+      content: "";
+      display: block;
+      width: 100%;
+      height: 1px;
+      background-color: #ccc;
+      transform: translateY(4px);
+    }
   }
 `;
 
-export const ChatGPTWeb =  forwardRef((props, ref) => {
+export const ChatGPTWeb = forwardRef((props, ref) => {
   // webviewDom
   let webviewRef = useRef<any>(null);
 
@@ -35,24 +58,19 @@ export const ChatGPTWeb =  forwardRef((props, ref) => {
 
   // load userSetting
   useEffect(() => {
-    updateUserSetting()
+    updateUserSetting();
   }, []);
- 
+
   // update userSetting
   const updateUserSetting = () => {
     console.log("updateUserSetting");
     const userSetting = JSON.parse(
       window.localStorage.getItem("userSetting") || "{}"
     );
-    setPromptList(
-      userSetting?.chatGPT?.prompts
-    );
-  } 
+    setPromptList(userSetting?.chatGPT?.prompts);
+  };
 
-  useImperativeHandle(
-    ref,
-    () => ({ updateUserSetting })
-  );
+  useImperativeHandle(ref, () => ({ updateUserSetting }));
 
   useEffect(() => {
     webviewRef.current.addEventListener("did-fail-load", (error: Error) => {
@@ -61,24 +79,30 @@ export const ChatGPTWeb =  forwardRef((props, ref) => {
     webviewRef.current.addEventListener("did-finish-load", (event: any) => {
       console.log("loaded", event);
       // webviewRef.current.openDevTools();
-      webviewRef.current.addEventListener('ipc-message', (event: any) => {
-        console.log('ipc-message', event)
+      webviewRef.current.addEventListener("ipc-message", (event: any) => {
+        console.log("ipc-message", event);
         // Prints "xxxx"
-      })
+      });
       setShowFloatBox(true);
     });
   });
 
-  function assemblePrompt() {
-    webviewRef.current.send("assemblePrompt", promptList[0].value);
+  function assemblePrompt(value?: string) {
+    webviewRef.current.send("assemblePrompt", value);
     console.log("assemblePrompt 1");
   }
 
   return (
     <Container>
       {showFloatBox && (
-        <div className="float-box" onClick={assemblePrompt}>
-          翻译官
+        <div className="float-box" >
+          {promptList.map((item: any) => {
+            return <div onClick={
+              () => {
+                assemblePrompt(item.value);
+              }
+            } >{item.name}</div>;
+          })}
         </div>
       )}
       <webview
@@ -88,4 +112,4 @@ export const ChatGPTWeb =  forwardRef((props, ref) => {
       ></webview>
     </Container>
   );
-})
+});

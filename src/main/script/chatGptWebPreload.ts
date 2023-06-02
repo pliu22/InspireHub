@@ -19,10 +19,15 @@ ipcRenderer.on("assemblePrompt", (_, msg) => {
     if (!textInputDom) {
       initTextInputDom();
     }
+    // 使用js模拟输入事件，并且输入字符
     textInputDom!.value = val;
+    const inputEvent=document.createEvent("HTMLEvents");
+    inputEvent.initEvent("input", true, true);
+    textInputDom!.dispatchEvent(inputEvent);
+    // 模拟点击按钮
     const btn = document.querySelector("#prompt-textarea ~ button")
     btn!.removeAttribute('disabled');
-    (btn as any).click()
+    (btn as any).click();
     btn!.setAttribute('disabled', 'true')
   };
 
