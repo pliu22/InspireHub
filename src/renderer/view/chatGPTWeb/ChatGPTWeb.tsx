@@ -36,6 +36,10 @@ const Container = styled.div`
       margin: 4px 0;
       font-size: 12px;
       font-weight: 600;
+      transition: .3s;
+    }
+    div:hover {
+      transform: scale(1.1);
     }
     div:not(:last-child):after {
       content: "";

@@ -65,11 +65,11 @@ export default function ChatGPTWeb() {
 
   return (
     <Container>
-      {showFloatBox && (
+      {/* {showFloatBox && (
         <div className="float-box" onClick={assemblePrompt}>
           翻译官
         </div>
-      )}
+      )} */}
       <webview
         nodeintegration
         ref={webviewRef}

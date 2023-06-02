@@ -1,5 +1,6 @@
 import Store from 'electron-store'
 import defalutSetting from './defalutSetting.json'
+import { ConfigModel } from './model'
 
 const store = new Store();
 
@@ -22,6 +23,10 @@ export function getUserSetting() {
         return defalutSetting
     }
     return data;
+}
+
+export function setUserSetting(data: ConfigModel) {
+    store.set('user.customSetting', data)
 }
 
 module.exports = {
