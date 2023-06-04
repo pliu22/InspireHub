@@ -125,10 +125,10 @@ export default function Setting() {
 
   // save user setting
   function saveUserSetting() {
-    // window.localStorage.setItem("userSetting", JSON.stringify(userSetting));
+    window.localStorage.setItem("userSetting", JSON.stringify(userSetting));
     // ipc from render to main process
     // @ts-ignore
-    // window.electronAPI.saveUserSetting(userSetting);
+    window.electronAPI.saveUserSetting(userSetting);
     messageApi.success("保存成功");
   }
 
